@@ -65,6 +65,13 @@
   .tips ul { margin-left: 18px; }
   .tips li { margin: 6px 0; font-size: 0.92rem; }
   .tips strong { color: var(--yellow); }
+  details { margin-bottom: 28px; }
+  details summary { cursor: pointer; font-size: 1.3rem; font-weight: 600; padding: 12px 0; border-bottom: 1px solid var(--border); list-style: none; display: flex; align-items: center; gap: 8px; }
+  details summary::-webkit-details-marker { display: none; }
+  details summary::before { content: '▶'; font-size: 0.7rem; transition: transform 0.2s; display: inline-block; }
+  details[open] summary::before { transform: rotate(90deg); }
+  details summary:hover { color: #fff; }
+  details .cycle-meta { margin-top: 8px; }
   .lang-switch { text-align: right; margin-bottom: 8px; }
   .lang-switch a { color: var(--dim); text-decoration: none; font-size: 0.85rem; padding: 4px 10px; border: 1px solid var(--border); border-radius: 6px; }
   .lang-switch a:hover { color: var(--text); border-color: var(--dim); }
@@ -133,8 +140,9 @@
   </ul>
 </div>
 
-<!-- CYCLE 1 -->
-<h2><span class="section-label s-green">🟢 Cycle 1</span> Months 1–4</h2>
+<details><summary><span class="section-label s-green">🟢 Cycle 1</span>Months 1–4</summary>
+
+
 <p class="cycle-meta"><strong>Keys:</strong> C, F, G &nbsp;|&nbsp; <strong>Voicing:</strong> Triad &nbsp;|&nbsp; <strong>Scales:</strong> Ionian, Dorian, Mixolydian</p>
 <table>
 <thead><tr><th>Week</th><th>Keys</th><th>Intervals</th><th>Scales</th><th>Voicing</th></tr></thead>
@@ -158,8 +166,10 @@
 </tbody>
 </table>
 
-<!-- CYCLE 2 -->
-<h2><span class="section-label s-yellow">🟡 Cycle 2</span> Months 5–8</h2>
+</details>
+<details><summary><span class="section-label s-yellow">🟡 Cycle 2</span>Months 5–8</summary>
+
+
 <p class="cycle-meta"><strong>Keys:</strong> C, F, G, D, Bb, Eb &nbsp;|&nbsp; <strong>Voicing:</strong> Triad → + Open Triad from W05 &nbsp;|&nbsp; <strong>Scales:</strong> All 7 Major modes</p>
 <table>
 <thead><tr><th>Week</th><th>Keys</th><th>Intervals</th><th>Scales</th><th>Voicing</th></tr></thead>
@@ -183,8 +193,10 @@
 </tbody>
 </table>
 
-<!-- CYCLE 3 -->
-<h2><span class="section-label s-orange">🟠 Cycle 3</span> Months 9–12</h2>
+</details>
+<details><summary><span class="section-label s-orange">🟠 Cycle 3</span>Months 9–12</summary>
+
+
 <p class="cycle-meta"><strong>Keys:</strong> C, F, G, D, Bb, Eb, A, Ab, Db &nbsp;|&nbsp; <strong>Voicing:</strong> Triad + OT → + Drop 2 from W05 &nbsp;|&nbsp; <strong>Scales:</strong> Major 7 + Melodic Minor, Lydian b7, Altered</p>
 <table>
 <thead><tr><th>Week</th><th>Keys</th><th>Intervals</th><th>Scales</th><th>Voicing</th></tr></thead>
@@ -208,8 +220,10 @@
 </tbody>
 </table>
 
-<!-- CYCLE 4 -->
-<h2><span class="section-label s-red">🔴 Cycle 4</span> Months 13–16</h2>
+</details>
+<details><summary><span class="section-label s-red">🔴 Cycle 4</span>Months 13–16</summary>
+
+
 <p class="cycle-meta"><strong>Keys:</strong> All 12 keys &nbsp;|&nbsp; <strong>Voicing:</strong> Triad + OT + D2 → + Drop 3 from W05 &nbsp;|&nbsp; <strong>Scales:</strong> All modes</p>
 <table>
 <thead><tr><th>Week</th><th>Keys</th><th>Intervals</th><th>Scales</th><th>Voicing</th></tr></thead>
@@ -276,3 +290,4 @@
 
 </body>
 </html>
+</details>
