@@ -1,15 +1,15 @@
-import { head, put } from "@vercel/blob";
+import { list, put } from "@vercel/blob";
 
 const BLOB_KEY = "guestbook.json";
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
     try {
-      const blob = await head(BLOB_KEY);
-      if (!blob) return res.status(200).json([]);
-      const data = await fetch(blob.url).then(r => r.json());
+      const { blobs } = await list({ prefix: BLOB_KEY, limit: 1 });
+      if (!blobs || blobs.length === 0) return res.status(200).json([]);
+      const data = await fetch(blobs[0].url).then(r => r.json());
       return res.status(200).json(data);
-    } catch {
+    } catch (e) {
       return res.status(200).json([]);
     }
   }
@@ -22,8 +22,8 @@ export default async function handler(req, res) {
 
     let entries = [];
     try {
-      const blob = await head(BLOB_KEY);
-      if (blob) entries = await fetch(blob.url).then(r => r.json());
+      const { blobs } = await list({ prefix: BLOB_KEY, limit: 1 });
+      if (blobs && blobs.length > 0) entries = await fetch(blobs[0].url).then(r => r.json());
     } catch {}
 
     entries.unshift({
