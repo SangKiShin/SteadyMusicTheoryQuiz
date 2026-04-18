@@ -1,4 +1,4 @@
-import { head, put, download } from "@vercel/blob";
+import { head, put } from "@vercel/blob";
 
 const BLOB_KEY = "guestbook.json";
 
@@ -7,9 +7,8 @@ export default async function handler(req, res) {
     try {
       const blob = await head(BLOB_KEY);
       if (!blob) return res.status(200).json([]);
-      const data = await download(BLOB_KEY);
-      const entries = await data.text().then(t => JSON.parse(t));
-      return res.status(200).json(entries);
+      const data = await fetch(blob.url).then(r => r.json());
+      return res.status(200).json(data);
     } catch {
       return res.status(200).json([]);
     }
@@ -24,10 +23,7 @@ export default async function handler(req, res) {
     let entries = [];
     try {
       const blob = await head(BLOB_KEY);
-      if (blob) {
-        const data = await download(BLOB_KEY);
-        entries = await data.text().then(t => JSON.parse(t));
-      }
+      if (blob) entries = await fetch(blob.url).then(r => r.json());
     } catch {}
 
     entries.unshift({
@@ -37,7 +33,7 @@ export default async function handler(req, res) {
 
     if (entries.length > 200) entries = entries.slice(0, 200);
 
-    await put(BLOB_KEY, JSON.stringify(entries), { contentType: "application/json", allowOverwrite: true });
+    await put(BLOB_KEY, JSON.stringify(entries), { access: "public", contentType: "application/json", allowOverwrite: true });
     return res.status(200).json({ ok: true });
   }
 
