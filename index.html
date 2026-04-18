@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎸 Steady Music Quiz — Curriculum Guide</title>
+<title>🎸 Steady Music Quiz</title>
 <style>
   :root {
     --bg: #0f0f1a;
@@ -25,54 +25,25 @@
   .intro { text-align: center; font-size: 1.05rem; color: var(--dim); max-width: 640px; margin: 0 auto 32px; line-height: 1.8; }
   h2 { font-size: 1.4rem; margin: 40px 0 16px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
   h3 { font-size: 1.1rem; margin: 24px 0 12px; color: var(--blue); }
-  .overview-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin-bottom: 24px; }
-  .cycle-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px; }
-  .cycle-card h4 { font-size: 1rem; margin-bottom: 8px; }
-  .cycle-card ul { list-style: none; font-size: 0.9rem; color: var(--dim); }
-  .cycle-card li { margin: 2px 0; }
-  .cycle-card li::before { content: '→ '; }
-  .c1 { border-left: 3px solid var(--green); }
-  .c1 h4 { color: var(--green); }
-  .c2 { border-left: 3px solid var(--yellow); }
-  .c2 h4 { color: var(--yellow); }
-  .c3 { border-left: 3px solid var(--orange); }
-  .c3 h4 { color: var(--orange); }
-  .c4 { border-left: 3px solid var(--red); }
-  .c4 h4 { color: var(--red); }
-  .principles { background: var(--card); border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; }
-  .principles ul { margin-left: 18px; }
-  .principles li { margin: 4px 0; font-size: 0.92rem; }
-  table { width: 100%; border-collapse: collapse; margin-bottom: 28px; font-size: 0.88rem; }
-  thead th { background: var(--card); padding: 10px 8px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--border); white-space: nowrap; }
-  tbody td { padding: 8px; border-bottom: 1px solid var(--border); }
-  tbody tr:hover { background: rgba(255,255,255,0.03); }
-  .week { font-weight: 600; color: var(--blue); text-align: center; width: 50px; }
-  .keys { color: var(--purple); }
-  .interval-focus td { background: rgba(96,165,250,0.05); }
-  .string-set { color: var(--yellow); font-weight: 500; font-size: 0.82rem; }
+  .quiz-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-bottom: 16px; }
+  .quiz-card h4 { font-size: 1rem; color: var(--blue); margin-bottom: 8px; }
+  .quiz-card ul { margin-left: 18px; }
+  .quiz-card li { margin: 4px 0; font-size: 0.92rem; color: var(--dim); }
+  .quiz-card li strong { color: var(--text); }
+  .quiz-card .example { background: rgba(255,255,255,0.03); border-left: 3px solid var(--blue); padding: 8px 12px; margin: 8px 0 4px; border-radius: 0 6px 6px 0; font-size: 0.88rem; color: var(--dim); }
+  .mode-table { width: 100%; border-collapse: collapse; margin: 8px 0; font-size: 0.88rem; }
+  .mode-table th { background: var(--card); padding: 8px; text-align: left; border-bottom: 2px solid var(--border); }
+  .mode-table td { padding: 6px 8px; border-bottom: 1px solid var(--border); }
+  .mode-table tr:hover { background: rgba(255,255,255,0.03); }
   .section-label { display: inline-block; padding: 4px 12px; border-radius: 20px; font-weight: 600; font-size: 0.85rem; margin-bottom: 8px; }
+  .s-blue { background: rgba(96,165,250,0.15); color: var(--blue); }
   .s-green { background: rgba(74,222,128,0.15); color: var(--green); }
-  .s-yellow { background: rgba(250,204,21,0.15); color: var(--yellow); }
-  .s-orange { background: rgba(251,146,60,0.15); color: var(--orange); }
-  .s-red { background: rgba(248,113,113,0.15); color: var(--red); }
-  .cycle-meta { font-size: 0.9rem; color: var(--dim); margin-bottom: 12px; }
-  .quiz-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
-  .quiz-card { background: var(--card); border-radius: 10px; padding: 14px; }
-  .quiz-card h4 { font-size: 0.95rem; color: var(--blue); margin-bottom: 6px; }
-  .quiz-card ul { list-style: none; font-size: 0.88rem; }
-  .quiz-card li { margin: 3px 0; color: var(--dim); }
-  .quiz-card li::before { content: '♪ '; }
-  .tips { background: var(--card); border-radius: 12px; padding: 16px 20px; margin-bottom: 24px; }
-  .tips ul { margin-left: 18px; }
-  .tips li { margin: 6px 0; font-size: 0.92rem; }
-  .tips strong { color: var(--yellow); }
   details { margin-bottom: 28px; }
   details summary { cursor: pointer; font-size: 1.3rem; font-weight: 600; padding: 12px 0; border-bottom: 1px solid var(--border); list-style: none; display: flex; align-items: center; gap: 8px; }
   details summary::-webkit-details-marker { display: none; }
   details summary::before { content: '▶'; font-size: 0.7rem; transition: transform 0.2s; display: inline-block; }
   details[open] summary::before { transform: rotate(90deg); }
   details summary:hover { color: #fff; }
-  details .cycle-meta { margin-top: 8px; }
   .lang-switch { text-align: right; margin-bottom: 8px; }
   .lang-switch a { color: var(--dim); text-decoration: none; font-size: 0.85rem; padding: 4px 10px; border: 1px solid var(--border); border-radius: 6px; }
   .lang-switch a:hover { color: var(--text); border-color: var(--dim); }
@@ -80,9 +51,7 @@
   @media (max-width: 600px) {
     body { padding: 12px; }
     h1 { font-size: 1.5rem; }
-    table { font-size: 0.78rem; }
-    .overview-grid { grid-template-columns: 1fr; }
-    .quiz-grid { grid-template-columns: 1fr; }
+    .mode-table { font-size: 0.78rem; }
   }
 </style>
 </head>
@@ -90,208 +59,122 @@
 
 <div class="lang-switch"><a href="index-ko.html">🇰🇷 한국어</a></div>
 <h1>🎸 Steady Music Quiz</h1>
-<p class="subtitle">A <strong>16-month master plan</strong> consisting of 4 cycles, each 4 months long.<br><a href="https://t.me/SteadyMusicTheoryQuiz" style="color:var(--blue);text-decoration:none;font-size:0.95rem;">▶️ Telegram 채널 — @SteadyMusicTheoryQuiz</a></p>
+<p class="subtitle"><a href="https://t.me/SteadyMusicTheoryQuiz" style="color:var(--blue);text-decoration:none;font-size:0.95rem;">▶️ Telegram 채널 — @SteadyMusicTheoryQuiz</a></p>
 
-<p class="intro">Steady Music Quiz is a Telegram channel that delivers a music theory quiz every hour during your workday — so you can study in bite-sized moments, one question at a time.</p>
+<p class="intro">Steady Music Quiz delivers a music theory quiz every hour during your workday — so you can study in bite-sized moments, one question at a time.</p>
 
-<h2>📅 Overview</h2>
-<div class="overview-grid">
-  <div class="cycle-card c1">
-    <h4>🟢 Cycle 1 (Months 1–4)</h4>
-    <ul>
-      <li>C, F, G (3 keys)</li>
-      <li>Triad</li>
-      <li>Ionian, Dorian, Mixolydian</li>
-    </ul>
-  </div>
-  <div class="cycle-card c2">
-    <h4>🟡 Cycle 2 (Months 5–8)</h4>
-    <ul>
-      <li>+ D, Bb, Eb (6 keys)</li>
-      <li>+ Open Triad</li>
-      <li>+ Phrygian, Lydian, Aeolian, Locrian</li>
-    </ul>
-  </div>
-  <div class="cycle-card c3">
-    <h4>🟠 Cycle 3 (Months 9–12)</h4>
-    <ul>
-      <li>+ A, Ab, Db (9 keys)</li>
-      <li>+ Drop 2</li>
-      <li>+ Melodic Minor, Lydian b7, Altered</li>
-    </ul>
-  </div>
-  <div class="cycle-card c4">
-    <h4>🔴 Cycle 4 (Months 13–16)</h4>
-    <ul>
-      <li>+ E, B, Gb (12 keys)</li>
-      <li>+ Drop 3</li>
-      <li>+ Dorian b2, Lydian Aug, Mixo b6, Locrian #2</li>
-    </ul>
+<h2>🎯 Quiz Types</h2>
+
+<details open><summary><span class="section-label s-blue">🎶 Interval &amp; Scale Quizzes</span></summary>
+
+<div class="quiz-card">
+  <h4>1. Find Note</h4>
+  <p style="color:var(--dim);font-size:0.92rem;margin-bottom:8px;">Given a <strong style="color:var(--text)">root</strong> and an <strong style="color:var(--text)">interval</strong>, name the target note.</p>
+  <div class="example">Q: What is the Major 3rd of C?<br>A: E</div>
+  <div class="example">Q: What is the Minor 7th of G?<br>A: F</div>
+</div>
+
+<div class="quiz-card">
+  <h4>2. Find Interval</h4>
+  <p style="color:var(--dim);font-size:0.92rem;margin-bottom:8px;">Given a <strong style="color:var(--text)">root</strong> and a <strong style="color:var(--text)">note</strong>, identify the interval between them.</p>
+  <div class="example">Q: A is the ______ of F?<br>A: M3 (Major 3rd)</div>
+  <div class="example">Q: Eb is the ______ of F?<br>A: m7 (Minor 7th)</div>
+</div>
+
+<div class="quiz-card">
+  <h4>3. Mode Info</h4>
+  <p style="color:var(--dim);font-size:0.92rem;margin-bottom:8px;">Given a <strong style="color:var(--text)">mode category</strong> and an <strong style="color:var(--text)">index</strong>, name the mode and its interval formula.</p>
+  <div class="example">Q: [Major Modes] What is the name and interval formula of mode 5th?<br>A: Mixolydian: R, 2, 3, 4, 5, 6, b7</div>
+  <div class="example">Q: [Melodic Minor Modes] What is the name and interval formula of mode 7th?<br>A: Altered: R, b2, b3, b4, b5, b6, b7</div>
+</div>
+
+<div class="quiz-card">
+  <h4>4. Mode Notes</h4>
+  <p style="color:var(--dim);font-size:0.92rem;margin-bottom:8px;">Given a <strong style="color:var(--text)">root</strong> and a <strong style="color:var(--text)">mode</strong>, spell out all the notes.</p>
+  <div class="example">Q: Spell the notes of C Ionian.<br>A: C, D, E, F, G, A, B</div>
+  <div class="example">Q: Spell the notes of D Dorian.<br>A: D, E, F, G, A, B, C</div>
+</div>
+
+</details>
+
+<details><summary><span class="section-label s-green">🎸 Voicing Quizzes</span></summary>
+
+<div class="quiz-card">
+  <h4>5. Voicing Puzzle</h4>
+  <p style="color:var(--dim);font-size:0.92rem;margin-bottom:8px;">A chord symbol is given (e.g. <strong style="color:var(--text)">Cmaj7</strong>) along with a <strong style="color:var(--text)">voicing type</strong> and <strong style="color:var(--text)">string set</strong>. A fretboard diagram shows one hint note — fill in the remaining notes on the correct frets.</p>
+  <div class="example">
+    🎸 Voicing Quiz<br>
+    Chord: Cmaj &nbsp;|&nbsp; Type: Triad &nbsp;|&nbsp; Strings: [1,2,3]<br><br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&gt;5 &nbsp;&gt;6 &nbsp;&gt;7 &nbsp;&gt;8 &nbsp;&gt;9<br>
+    +---+---+---+<strong>C</strong>+---+ e<br>
+    +---+---+---+---+---+ B<br>
+    +---+---+---+---+---+ G<br>
+    +---+---+---+---+---+ D<br>
+    +---+---+---+---+---+ A<br>
+    +---+---+---+---+---+ E<br><br>
+    ▶ Answer: E@8, G@7 (hint: C@5)
   </div>
 </div>
 
-<div class="principles">
-  <h3 style="margin-top:0">Core Principles</h3>
-  <ul>
-    <li><strong>3 keys added per cycle</strong>, accumulating (3→6→9→12)</li>
-    <li><strong>W01–W04:</strong> Gradually introduce new keys while reviewing existing voicings</li>
-    <li><strong>W05–W08:</strong> New voicing introduced + new scales added progressively</li>
-    <li><strong>W09–W16:</strong> Review, deepen, and consolidate</li>
-    <li><strong>W09:</strong> Interval-focused week (no scale modes)</li>
-    <li><strong>One string set per voicing type per week:</strong> Rotating on 4/3/2-week cycles</li>
-    <li>After 16 months, the cycle repeats from Cycle 1</li>
-  </ul>
-</div>
-
-<details><summary><span class="section-label s-green">🟢 Cycle 1</span>Months 1–4</summary>
-
-
-<p class="cycle-meta"><strong>Keys:</strong> C, F, G &nbsp;|&nbsp; <strong>Voicing:</strong> Triad &nbsp;|&nbsp; <strong>Scales:</strong> Ionian, Dorian, Mixolydian</p>
-<table>
-<thead><tr><th>Week</th><th>Keys</th><th>Intervals</th><th>Scales</th><th>Voicing</th></tr></thead>
+<h3>Voicing Types</h3>
+<table class="mode-table">
+<thead><tr><th>Type</th><th>Parts</th><th>Description</th><th>String Sets</th></tr></thead>
 <tbody>
-<tr><td class="week">1</td><td class="keys">C, F</td><td>M3, P5</td><td>—</td><td>Maj/min <span class="string-set">[1,2,3]</span></td></tr>
-<tr><td class="week">2</td><td class="keys">C, F</td><td>+ m3</td><td>—</td><td>Maj/min/aug <span class="string-set">[2,3,4]</span></td></tr>
-<tr><td class="week">3</td><td class="keys">+ G</td><td>+ m7</td><td>Ionian</td><td>4 qualities <span class="string-set">[3,4,5]</span></td></tr>
-<tr><td class="week">4</td><td class="keys">3 keys</td><td>+ M2</td><td>+ Dorian</td><td>4 qualities <span class="string-set">[4,5,6]</span></td></tr>
-<tr><td class="week">5</td><td class="keys">3 keys</td><td>+ P4</td><td>+ Mixolydian</td><td>4 qualities <span class="string-set">[1,2,3]</span></td></tr>
-<tr><td class="week">6</td><td class="keys">3 keys</td><td>+ M7</td><td>3 modes (spellings)</td><td>4 qualities <span class="string-set">[2,3,4]</span></td></tr>
-<tr><td class="week">7</td><td class="keys">3 keys</td><td>+ Aug4, dim5</td><td>3 modes (drill)</td><td>4 qualities <span class="string-set">[3,4,5]</span></td></tr>
-<tr><td class="week">8</td><td class="keys">3 keys</td><td>+ Aug2, m6</td><td>3 modes (apply)</td><td>4 qualities <span class="string-set">[4,5,6]</span></td></tr>
-<tr class="interval-focus"><td class="week">9</td><td class="keys">3 keys</td><td>+ Aug5, M6</td><td>— (interval focus)</td><td>4 qualities <span class="string-set">[1,2,3]</span></td></tr>
-<tr><td class="week">10</td><td class="keys">3 keys</td><td>All 14</td><td>3 modes (review)</td><td>4 qualities <span class="string-set">[2,3,4]</span></td></tr>
-<tr><td class="week">11</td><td class="keys">3 keys</td><td>All</td><td>Spelling focus</td><td>4 qualities <span class="string-set">[3,4,5]</span></td></tr>
-<tr><td class="week">12</td><td class="keys">3 keys</td><td>All</td><td>3 modes (drill)</td><td>4 qualities <span class="string-set">[4,5,6]</span></td></tr>
-<tr><td class="week">13</td><td class="keys">3 keys</td><td>All</td><td>Full review</td><td>4 qualities <span class="string-set">[1,2,3]</span></td></tr>
-<tr><td class="week">14</td><td class="keys">3 keys</td><td>All</td><td>Application</td><td>4 qualities <span class="string-set">[2,3,4]</span></td></tr>
-<tr><td class="week">15</td><td class="keys">3 keys</td><td>All</td><td>Comprehensive</td><td>4 qualities <span class="string-set">[3,4,5]</span></td></tr>
-<tr><td class="week">16</td><td class="keys">3 keys</td><td>All</td><td>Final Test</td><td>4 qualities <span class="string-set">[4,5,6]</span></td></tr>
+  <tr><td><strong>Triad</strong></td><td>3</td><td>Basic close-position triad</td><td>[1,2,3] [2,3,4] [3,4,5] [4,5,6]</td></tr>
+  <tr><td><strong>Open Triad</strong></td><td>3</td><td>Open-position triad (wider spacing)</td><td>[1,2,3,4] [2,3,4,5] [3,4,5,6]</td></tr>
+  <tr><td><strong>Drop 2</strong></td><td>4</td><td>4-part, 2nd voice dropped 1 octave</td><td>[1,2,3,4] [2,3,4,5] [3,4,5,6]</td></tr>
+  <tr><td><strong>Drop 3</strong></td><td>4</td><td>4-part, 3rd voice dropped 1 octave</td><td>[1,2,3,4,5] [2,3,4,5,6]</td></tr>
+  <tr><td><strong>Drop 2&amp;4</strong></td><td>4</td><td>4-part, 2nd &amp; 4th voices dropped</td><td>[1,2,3,4,5] [2,3,4,5,6]</td></tr>
 </tbody>
 </table>
 
-</details>
-<details><summary><span class="section-label s-yellow">🟡 Cycle 2</span>Months 5–8</summary>
-
-
-<p class="cycle-meta"><strong>Keys:</strong> C, F, G, D, Bb, Eb &nbsp;|&nbsp; <strong>Voicing:</strong> Triad → + Open Triad from W05 &nbsp;|&nbsp; <strong>Scales:</strong> All 7 Major modes</p>
-<table>
-<thead><tr><th>Week</th><th>Keys</th><th>Intervals</th><th>Scales</th><th>Voicing</th></tr></thead>
+<h3>Chord Qualities</h3>
+<table class="mode-table">
+<thead><tr><th>Triad (3-part)</th><th>7th (4-part)</th></tr></thead>
 <tbody>
-<tr><td class="week">1</td><td class="keys">C, F, D</td><td>All (review)</td><td>Ionian, Dorian, Mixolydian</td><td>Triad <span class="string-set">[1,2,3]</span></td></tr>
-<tr><td class="week">2</td><td class="keys">C, F, D</td><td>All</td><td>Same</td><td>Triad <span class="string-set">[2,3,4]</span></td></tr>
-<tr><td class="week">3</td><td class="keys">+ G, Bb</td><td>All</td><td>+ Phrygian</td><td>Triad <span class="string-set">[3,4,5]</span></td></tr>
-<tr><td class="week">4</td><td class="keys">6 keys</td><td>All</td><td>+ Lydian</td><td>Triad <span class="string-set">[4,5,6]</span></td></tr>
-<tr><td class="week">5</td><td class="keys">6 keys</td><td>All</td><td>+ Aeolian</td><td>Triad <span class="string-set">[1,2,3]</span> + OT <span class="string-set">[2,3,4,5]</span></td></tr>
-<tr><td class="week">6</td><td class="keys">6 keys</td><td>All</td><td>+ Locrian (7 complete)</td><td>Triad <span class="string-set">[2,3,4]</span> + OT <span class="string-set">[3,4,5,6]</span></td></tr>
-<tr><td class="week">7</td><td class="keys">6 keys</td><td>All</td><td>7 modes spelling focus</td><td>Triad <span class="string-set">[3,4,5]</span> + OT <span class="string-set">[1,2,3,4]</span></td></tr>
-<tr><td class="week">8</td><td class="keys">6 keys</td><td>All</td><td>7 modes drill</td><td>Triad <span class="string-set">[4,5,6]</span> + OT <span class="string-set">[2,3,4,5]</span></td></tr>
-<tr class="interval-focus"><td class="week">9</td><td class="keys">6 keys</td><td>All</td><td>— (interval focus)</td><td>Triad <span class="string-set">[1,2,3]</span> + OT <span class="string-set">[3,4,5,6]</span></td></tr>
-<tr><td class="week">10</td><td class="keys">6 keys</td><td>All</td><td>7 modes review</td><td>Triad <span class="string-set">[2,3,4]</span> + OT <span class="string-set">[1,2,3,4]</span></td></tr>
-<tr><td class="week">11</td><td class="keys">6 keys</td><td>All</td><td>Spelling focus</td><td>Triad <span class="string-set">[3,4,5]</span> + OT <span class="string-set">[2,3,4,5]</span></td></tr>
-<tr><td class="week">12</td><td class="keys">6 keys</td><td>All</td><td>7 modes drill</td><td>Triad <span class="string-set">[4,5,6]</span> + OT <span class="string-set">[3,4,5,6]</span></td></tr>
-<tr><td class="week">13</td><td class="keys">6 keys</td><td>All</td><td>Full review</td><td>Triad <span class="string-set">[1,2,3]</span> + OT <span class="string-set">[1,2,3,4]</span></td></tr>
-<tr><td class="week">14</td><td class="keys">6 keys</td><td>All</td><td>Application</td><td>Triad <span class="string-set">[2,3,4]</span> + OT <span class="string-set">[2,3,4,5]</span></td></tr>
-<tr><td class="week">15</td><td class="keys">6 keys</td><td>All</td><td>Comprehensive</td><td>Triad <span class="string-set">[3,4,5]</span> + OT <span class="string-set">[3,4,5,6]</span></td></tr>
-<tr><td class="week">16</td><td class="keys">6 keys</td><td>All</td><td>Final Test</td><td>Triad <span class="string-set">[4,5,6]</span> + OT <span class="string-set">[1,2,3,4]</span></td></tr>
-</tbody>
-</table>
-
-</details>
-<details><summary><span class="section-label s-orange">🟠 Cycle 3</span>Months 9–12</summary>
-
-
-<p class="cycle-meta"><strong>Keys:</strong> C, F, G, D, Bb, Eb, A, Ab, Db &nbsp;|&nbsp; <strong>Voicing:</strong> Triad + OT → + Drop 2 from W05 &nbsp;|&nbsp; <strong>Scales:</strong> Major 7 + Melodic Minor, Lydian b7, Altered</p>
-<table>
-<thead><tr><th>Week</th><th>Keys</th><th>Intervals</th><th>Scales</th><th>Voicing</th></tr></thead>
-<tbody>
-<tr><td class="week">1</td><td class="keys">C, F, A</td><td>All</td><td>Major 7 modes review</td><td>Triad <span class="string-set">[1,2,3]</span> + OT <span class="string-set">[1,2,3,4]</span></td></tr>
-<tr><td class="week">2</td><td class="keys">C, F, A</td><td>All</td><td>Same</td><td>Triad <span class="string-set">[2,3,4]</span> + OT <span class="string-set">[2,3,4,5]</span></td></tr>
-<tr><td class="week">3</td><td class="keys">+ G, Ab</td><td>All</td><td>Same</td><td>Triad <span class="string-set">[3,4,5]</span> + OT <span class="string-set">[3,4,5,6]</span></td></tr>
-<tr><td class="week">4</td><td class="keys">9 keys</td><td>All</td><td>Same</td><td>Triad <span class="string-set">[4,5,6]</span> + OT <span class="string-set">[1,2,3,4]</span></td></tr>
-<tr><td class="week">5</td><td class="keys">9 keys</td><td>All</td><td><strong>+ Melodic Minor</strong></td><td>Triad <span class="string-set">[1,2,3]</span> + OT <span class="string-set">[2,3,4,5]</span> + D2 <span class="string-set">[2,3,4,5]</span></td></tr>
-<tr><td class="week">6</td><td class="keys">9 keys</td><td>All</td><td>MM spelling focus</td><td>Triad <span class="string-set">[2,3,4]</span> + OT <span class="string-set">[3,4,5,6]</span> + D2 <span class="string-set">[3,4,5,6]</span></td></tr>
-<tr><td class="week">7</td><td class="keys">9 keys</td><td>All</td><td><strong>+ Lydian b7</strong></td><td>Triad <span class="string-set">[3,4,5]</span> + OT <span class="string-set">[1,2,3,4]</span> + D2 <span class="string-set">[1,2,3,4]</span></td></tr>
-<tr><td class="week">8</td><td class="keys">9 keys</td><td>All</td><td><strong>+ Altered</strong></td><td>Triad <span class="string-set">[4,5,6]</span> + OT <span class="string-set">[2,3,4,5]</span> + D2 <span class="string-set">[2,3,4,5]</span></td></tr>
-<tr class="interval-focus"><td class="week">9</td><td class="keys">9 keys</td><td>All</td><td>— (interval focus)</td><td>Triad <span class="string-set">[1,2,3]</span> + OT <span class="string-set">[3,4,5,6]</span> + D2 <span class="string-set">[3,4,5,6]</span></td></tr>
-<tr><td class="week">10</td><td class="keys">9 keys</td><td>All</td><td>MM review</td><td>Triad <span class="string-set">[2,3,4]</span> + OT <span class="string-set">[1,2,3,4]</span> + D2 <span class="string-set">[1,2,3,4]</span></td></tr>
-<tr><td class="week">11</td><td class="keys">9 keys</td><td>All</td><td>Spelling focus</td><td>Triad <span class="string-set">[3,4,5]</span> + OT <span class="string-set">[2,3,4,5]</span> + D2 <span class="string-set">[2,3,4,5]</span></td></tr>
-<tr><td class="week">12</td><td class="keys">9 keys</td><td>All</td><td>Drill</td><td>Triad <span class="string-set">[4,5,6]</span> + OT <span class="string-set">[3,4,5,6]</span> + D2 <span class="string-set">[3,4,5,6]</span></td></tr>
-<tr><td class="week">13</td><td class="keys">9 keys</td><td>All</td><td>Full review</td><td>Triad <span class="string-set">[1,2,3]</span> + OT <span class="string-set">[1,2,3,4]</span> + D2 <span class="string-set">[1,2,3,4]</span></td></tr>
-<tr><td class="week">14</td><td class="keys">9 keys</td><td>All</td><td>Application</td><td>Triad <span class="string-set">[2,3,4]</span> + OT <span class="string-set">[2,3,4,5]</span> + D2 <span class="string-set">[2,3,4,5]</span></td></tr>
-<tr><td class="week">15</td><td class="keys">9 keys</td><td>All</td><td>Comprehensive</td><td>Triad <span class="string-set">[3,4,5]</span> + OT <span class="string-set">[3,4,5,6]</span> + D2 <span class="string-set">[3,4,5,6]</span></td></tr>
-<tr><td class="week">16</td><td class="keys">9 keys</td><td>All</td><td>Final Test</td><td>Triad <span class="string-set">[4,5,6]</span> + OT <span class="string-set">[1,2,3,4]</span> + D2 <span class="string-set">[1,2,3,4]</span></td></tr>
-</tbody>
-</table>
-
-</details>
-<details><summary><span class="section-label s-red">🔴 Cycle 4</span>Months 13–16</summary>
-
-
-<p class="cycle-meta"><strong>Keys:</strong> All 12 keys &nbsp;|&nbsp; <strong>Voicing:</strong> Triad + OT + D2 → + Drop 3 from W05 &nbsp;|&nbsp; <strong>Scales:</strong> All modes</p>
-<table>
-<thead><tr><th>Week</th><th>Keys</th><th>Intervals</th><th>Scales</th><th>Voicing</th></tr></thead>
-<tbody>
-<tr><td class="week">1</td><td class="keys">C, F, E</td><td>All</td><td>Major 7 + MM (Lyd b7, Alt)</td><td>Triad <span class="string-set">[1,2,3]</span> + OT <span class="string-set">[1,2,3,4]</span> + D2 <span class="string-set">[1,2,3,4]</span></td></tr>
-<tr><td class="week">2</td><td class="keys">C, F, E</td><td>All</td><td>Same</td><td>Triad <span class="string-set">[2,3,4]</span> + OT <span class="string-set">[2,3,4,5]</span> + D2 <span class="string-set">[2,3,4,5]</span></td></tr>
-<tr><td class="week">3</td><td class="keys">+ G, B, Bb</td><td>All</td><td>Same</td><td>Triad <span class="string-set">[3,4,5]</span> + OT <span class="string-set">[3,4,5,6]</span> + D2 <span class="string-set">[3,4,5,6]</span></td></tr>
-<tr><td class="week">4</td><td class="keys">12 keys</td><td>All</td><td>Same</td><td>Triad <span class="string-set">[4,5,6]</span> + OT <span class="string-set">[1,2,3,4]</span> + D2 <span class="string-set">[1,2,3,4]</span></td></tr>
-<tr><td class="week">5</td><td class="keys">12 keys</td><td>All</td><td><strong>+ Dorian b2</strong></td><td>Triad <span class="string-set">[1,2,3]</span> + OT <span class="string-set">[2,3,4,5]</span> + D2 <span class="string-set">[2,3,4,5]</span> + D3 <span class="string-set">[1,2,3,4,5]</span></td></tr>
-<tr><td class="week">6</td><td class="keys">12 keys</td><td>All</td><td><strong>+ Lydian Aug</strong></td><td>Triad <span class="string-set">[2,3,4]</span> + OT <span class="string-set">[3,4,5,6]</span> + D2 <span class="string-set">[3,4,5,6]</span> + D3 <span class="string-set">[2,3,4,5,6]</span></td></tr>
-<tr><td class="week">7</td><td class="keys">12 keys</td><td>All</td><td><strong>+ Mixo b6</strong></td><td>Triad <span class="string-set">[3,4,5]</span> + OT <span class="string-set">[1,2,3,4]</span> + D2 <span class="string-set">[1,2,3,4]</span> + D3 <span class="string-set">[1,2,3,4,5]</span></td></tr>
-<tr><td class="week">8</td><td class="keys">12 keys</td><td>All</td><td><strong>+ Locrian #2</strong></td><td>Triad <span class="string-set">[4,5,6]</span> + OT <span class="string-set">[2,3,4,5]</span> + D2 <span class="string-set">[2,3,4,5]</span> + D3 <span class="string-set">[2,3,4,5,6]</span></td></tr>
-<tr class="interval-focus"><td class="week">9</td><td class="keys">12 keys</td><td>All</td><td>— (interval focus)</td><td>Triad <span class="string-set">[1,2,3]</span> + OT <span class="string-set">[3,4,5,6]</span> + D2 <span class="string-set">[3,4,5,6]</span> + D3 <span class="string-set">[1,2,3,4,5]</span></td></tr>
-<tr><td class="week">10</td><td class="keys">12 keys</td><td>All</td><td>MM 7 derivative modes</td><td>Triad <span class="string-set">[2,3,4]</span> + OT <span class="string-set">[1,2,3,4]</span> + D2 <span class="string-set">[1,2,3,4]</span> + D3 <span class="string-set">[2,3,4,5,6]</span></td></tr>
-<tr><td class="week">11</td><td class="keys">12 keys</td><td>All</td><td>Spelling focus</td><td>Triad <span class="string-set">[3,4,5]</span> + OT <span class="string-set">[2,3,4,5]</span> + D2 <span class="string-set">[2,3,4,5]</span> + D3 <span class="string-set">[1,2,3,4,5]</span></td></tr>
-<tr><td class="week">12</td><td class="keys">12 keys</td><td>All</td><td>Drill</td><td>Triad <span class="string-set">[4,5,6]</span> + OT <span class="string-set">[3,4,5,6]</span> + D2 <span class="string-set">[3,4,5,6]</span> + D3 <span class="string-set">[2,3,4,5,6]</span></td></tr>
-<tr><td class="week">13</td><td class="keys">12 keys</td><td>All</td><td>All modes review</td><td>Triad <span class="string-set">[1,2,3]</span> + OT <span class="string-set">[1,2,3,4]</span> + D2 <span class="string-set">[1,2,3,4]</span> + D3 <span class="string-set">[1,2,3,4,5]</span></td></tr>
-<tr><td class="week">14</td><td class="keys">12 keys</td><td>All</td><td>Application</td><td>Triad <span class="string-set">[2,3,4]</span> + OT <span class="string-set">[2,3,4,5]</span> + D2 <span class="string-set">[2,3,4,5]</span> + D3 <span class="string-set">[2,3,4,5,6]</span></td></tr>
-<tr><td class="week">15</td><td class="keys">12 keys</td><td>All</td><td>Comprehensive</td><td>Triad <span class="string-set">[3,4,5]</span> + OT <span class="string-set">[3,4,5,6]</span> + D2 <span class="string-set">[3,4,5,6]</span> + D3 <span class="string-set">[1,2,3,4,5]</span></td></tr>
-<tr><td class="week">16</td><td class="keys">12 keys</td><td>All</td><td>Final Test</td><td>Triad <span class="string-set">[4,5,6]</span> + OT <span class="string-set">[1,2,3,4]</span> + D2 <span class="string-set">[1,2,3,4]</span> + D3 <span class="string-set">[2,3,4,5,6]</span></td></tr>
+  <tr><td>Maj (R 3 5)</td><td>Maj7 (R 3 5 7)</td></tr>
+  <tr><td>min (R b3 5)</td><td>m7 (R b3 5 b7)</td></tr>
+  <tr><td>aug (R 3 #5)</td><td>7 (R 3 5 b7)</td></tr>
+  <tr><td>dim (R b3 b5)</td><td>m7b5 (R b3 b5 b7)</td></tr>
+  <tr><td></td><td>dim7 (R b3 b5 bb7)</td></tr>
 </tbody>
 </table>
 
 </details>
 
-<details><summary><span class="section-label">🎯 Quiz Types</span>Quiz Types</summary>
-<div class="quiz-grid">
-  <div class="quiz-card">
-    <h4>Interval & Scale Quizzes</h4>
-    <ul>
-      <li><strong>Find Note</strong> — Root + interval → which note?</li>
-      <li><strong>Find Interval</strong> — Root + note → what interval?</li>
-      <li><strong>Mode Info</strong> — Category + index → mode name & formula</li>
-      <li><strong>Mode Notes</strong> — Root + mode → scale degrees</li>
-    </ul>
-  </div>
-  <div class="quiz-card">
-    <h4>Voicing Quizzes</h4>
-    <ul>
-      <li><strong>Triad</strong> — 3-part basic voicing</li>
-      <li><strong>Open Triad</strong> — 3-part open voicing</li>
-      <li><strong>Drop 2</strong> — 4-part, 2nd voice dropped octave</li>
-      <li><strong>Drop 3</strong> — 4-part, 3rd voice dropped octave</li>
-    </ul>
-  </div>
-</div>
+<details><summary><span class="section-label">🎼 Scale Reference</span>Modes covered</summary>
+
+<h3>Major Modes</h3>
+<table class="mode-table">
+<thead><tr><th>#</th><th>Mode</th><th>Formula</th></tr></thead>
+<tbody>
+  <tr><td>1</td><td>Ionian</td><td>R, 2, 3, 4, 5, 6, 7</td></tr>
+  <tr><td>2</td><td>Dorian</td><td>R, 2, b3, 4, 5, 6, b7</td></tr>
+  <tr><td>3</td><td>Phrygian</td><td>R, b2, b3, 4, 5, b6, b7</td></tr>
+  <tr><td>4</td><td>Lydian</td><td>R, 2, 3, #4, 5, 6, 7</td></tr>
+  <tr><td>5</td><td>Mixolydian</td><td>R, 2, 3, 4, 5, 6, b7</td></tr>
+  <tr><td>6</td><td>Aeolian</td><td>R, 2, b3, 4, 5, b6, b7</td></tr>
+  <tr><td>7</td><td>Locrian</td><td>R, b2, b3, 4, b5, b6, b7</td></tr>
+</tbody>
+</table>
+
+<h3>Melodic Minor Modes</h3>
+<table class="mode-table">
+<thead><tr><th>#</th><th>Mode</th><th>Formula</th></tr></thead>
+<tbody>
+  <tr><td>1</td><td>Melodic Minor</td><td>R, 2, b3, 4, 5, 6, 7</td></tr>
+  <tr><td>2</td><td>Dorian b2</td><td>R, b2, b3, 4, 5, 6, b7</td></tr>
+  <tr><td>3</td><td>Lydian Augmented</td><td>R, 2, 3, #4, #5, 6, 7</td></tr>
+  <tr><td>4</td><td>Lydian Dominant</td><td>R, 2, 3, #4, 5, 6, b7</td></tr>
+  <tr><td>5</td><td>Mixolydian b6</td><td>R, 2, 3, 4, 5, b6, b7</td></tr>
+  <tr><td>6</td><td>Locrian #2</td><td>R, 2, b3, 4, b5, b6, b7</td></tr>
+  <tr><td>7</td><td>Altered</td><td>R, b2, b3, b4, b5, b6, b7</td></tr>
+</tbody>
+</table>
+
 </details>
 
-<details><summary><span class="section-label">💡 Study Tips</span>Study Tips</summary>
-<div class="tips">
-  <ul>
-    <li><strong>Keys grow by 3 each cycle.</strong> 3 → 6 → 9 → 12 keys total.</li>
-    <li><strong>Voicings open up progressively.</strong> Triad → Open Triad → Drop 2 → Drop 3.</li>
-    <li><strong>New voicings appear from W05.</strong> W01–04 is an adaptation period for new keys.</li>
-    <li><strong>One string set per voicing type per week.</strong> Master one position fully before moving on.</li>
-    <li><strong>Scales follow the same pattern.</strong> Essential 3 modes → all 7 Major modes → Melodic Minor family → complete.</li>
-    <li><strong>W09 is interval-focused.</strong> No scale modes — pure interval training.</li>
-    <li><strong>The cycle repeats after 16 months.</strong> Repetition builds unconscious mastery.</li>
-    <li><strong>Wrong answers are fine.</strong> This is training, not testing. Daily exposure rewires the brain.</li>
-    <li><strong>Play voicing quizzes on your guitar.</strong> Don't just think — let your hands remember.</li>
-  </ul>
-</div>
-</details>
-
-<footer>_A little every day, and in 16 months the foundations of jazz harmony will be second nature. 🎶_</footer>
+<footer>_A little every day, and the foundations of jazz harmony will become second nature. 🎶_</footer>
 
 </body>
 </html>
