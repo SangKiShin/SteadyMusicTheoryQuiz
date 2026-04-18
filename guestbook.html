@@ -54,8 +54,8 @@ async function load() {
     listEl.innerHTML = '<ul class="entries">' + entries.map(e =>
       '<li class="entry"><div class="entry-text">' + e.text + '</div><div class="entry-time">' + e.time + '</div></li>'
     ).join('') + '</ul>';
-  } catch {
-    listEl.innerHTML = '<p class="empty">불러오기 실패 😢</p>';
+  } catch (err) {
+    listEl.innerHTML = '<p class="empty">불러오기 실패: ' + err.message + '</p>';
   }
 }
 
@@ -67,10 +67,11 @@ document.getElementById('gb-form').addEventListener('submit', async e => {
   btn.disabled = true;
   btn.textContent = '...';
   try {
-    await fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text }) });
+    const r = await fetch(API, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ text }) });
+    if (!r.ok) { alert('POST 실패: ' + r.status + ' ' + (await r.text())); return; }
     input.value = '';
     await load();
-  } catch {}
+  } catch (err) { alert('에러: ' + err.message); }
   btn.disabled = false;
   btn.textContent = '남기기';
 });
