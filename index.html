@@ -101,7 +101,7 @@
 
 <div class="quiz-card">
   <h4>5. Voicing Puzzle</h4>
-  <p style="color:var(--dim);font-size:0.92rem;margin-bottom:8px;">A chord symbol is given (e.g. <strong style="color:var(--text)">Cmaj7</strong>) along with a <strong style="color:var(--text)">voicing type</strong> and <strong style="color:var(--text)">string set</strong>. A fretboard diagram shows one hint note — fill in the remaining notes on the correct frets.</p>
+  <p style="color:var(--dim);font-size:0.92rem;margin-bottom:8px;">A chord symbol is given along with a <strong style="color:var(--text)">voicing type</strong> and <strong style="color:var(--text)">string set</strong>. A fretboard diagram shows one hint note — fill in the remaining notes on the correct frets.</p>
   <div class="example">
     🎸 Voicing Quiz<br>
     Chord: Cmaj &nbsp;|&nbsp; Type: Triad &nbsp;|&nbsp; Strings: [1,2,3]<br><br>
@@ -114,31 +114,38 @@
     +---+---+---+---+---+ E<br><br>
     ▶ Answer: E@8, G@7 (hint: C@5)
   </div>
+  <h4 style="margin-top:16px">Voicing Types</h4>
+  <ul style="margin-left:18px;margin-bottom:12px">
+    <li><strong style="color:var(--text)">Triad</strong> — 3-part close-position voicing (R, 3rd, 5th stacked tightly)</li>
+    <li><strong style="color:var(--text)">Open Triad</strong> — 3-part with wider spacing between voices</li>
+    <li><strong style="color:var(--text)">Drop 2</strong> — 4-part voicing where the 2nd voice from the top is dropped down an octave</li>
+    <li><strong style="color:var(--text)">Drop 3</strong> — 4-part voicing where the 3rd voice from the top is dropped down an octave</li>
+    <li><strong style="color:var(--text)">Drop 2&amp;4</strong> — 4-part voicing where both the 2nd and 4th voices are dropped</li>
+  </ul>
+  <h4>String Sets</h4>
+  <p style="color:var(--dim);font-size:0.92rem;margin-bottom:4px">Each voicing type uses specific string sets (1=e, 2=B, 3=G, 4=D, 5=A, 6=E). Quizzes are generated per string set, so you master one position at a time.</p>
+  <table class="mode-table">
+  <thead><tr><th>Voicing Type</th><th>String Sets Used</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Triad</strong></td><td>[1,2,3] &nbsp; [2,3,4] &nbsp; [3,4,5] &nbsp; [4,5,6]</td></tr>
+    <tr><td><strong>Open Triad</strong></td><td>[1,2,3,4] &nbsp; [2,3,4,5] &nbsp; [3,4,5,6]</td></tr>
+    <tr><td><strong>Drop 2</strong></td><td>[1,2,3,4] &nbsp; [2,3,4,5] &nbsp; [3,4,5,6]</td></tr>
+    <tr><td><strong>Drop 3</strong></td><td>[1,2,3,4,5] &nbsp; [2,3,4,5,6]</td></tr>
+    <tr><td><strong>Drop 2&amp;4</strong></td><td>[1,2,3,4,5] &nbsp; [2,3,4,5,6]</td></tr>
+  </tbody>
+  </table>
+  <h4>Chord Qualities</h4>
+  <table class="mode-table">
+  <thead><tr><th>Triad Qualities (3-part)</th><th>7th Qualities (4-part)</th></tr></thead>
+  <tbody>
+    <tr><td>Maj (R 3 5)</td><td>Maj7 (R 3 5 7)</td></tr>
+    <tr><td>min (R b3 5)</td><td>m7 (R b3 5 b7)</td></tr>
+    <tr><td>aug (R 3 #5)</td><td>7 (R 3 5 b7)</td></tr>
+    <tr><td>dim (R b3 b5)</td><td>m7b5 (R b3 b5 b7)</td></tr>
+    <tr><td></td><td>dim7 (R b3 b5 bb7)</td></tr>
+  </tbody>
+  </table>
 </div>
-
-<h3>Voicing Types</h3>
-<table class="mode-table">
-<thead><tr><th>Type</th><th>Parts</th><th>Description</th><th>String Sets</th></tr></thead>
-<tbody>
-  <tr><td><strong>Triad</strong></td><td>3</td><td>Basic close-position triad</td><td>[1,2,3] [2,3,4] [3,4,5] [4,5,6]</td></tr>
-  <tr><td><strong>Open Triad</strong></td><td>3</td><td>Open-position triad (wider spacing)</td><td>[1,2,3,4] [2,3,4,5] [3,4,5,6]</td></tr>
-  <tr><td><strong>Drop 2</strong></td><td>4</td><td>4-part, 2nd voice dropped 1 octave</td><td>[1,2,3,4] [2,3,4,5] [3,4,5,6]</td></tr>
-  <tr><td><strong>Drop 3</strong></td><td>4</td><td>4-part, 3rd voice dropped 1 octave</td><td>[1,2,3,4,5] [2,3,4,5,6]</td></tr>
-  <tr><td><strong>Drop 2&amp;4</strong></td><td>4</td><td>4-part, 2nd &amp; 4th voices dropped</td><td>[1,2,3,4,5] [2,3,4,5,6]</td></tr>
-</tbody>
-</table>
-
-<h3>Chord Qualities</h3>
-<table class="mode-table">
-<thead><tr><th>Triad (3-part)</th><th>7th (4-part)</th></tr></thead>
-<tbody>
-  <tr><td>Maj (R 3 5)</td><td>Maj7 (R 3 5 7)</td></tr>
-  <tr><td>min (R b3 5)</td><td>m7 (R b3 5 b7)</td></tr>
-  <tr><td>aug (R 3 #5)</td><td>7 (R 3 5 b7)</td></tr>
-  <tr><td>dim (R b3 b5)</td><td>m7b5 (R b3 b5 b7)</td></tr>
-  <tr><td></td><td>dim7 (R b3 b5 bb7)</td></tr>
-</tbody>
-</table>
 
 </details>
 
