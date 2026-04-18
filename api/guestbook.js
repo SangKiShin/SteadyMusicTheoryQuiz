@@ -33,7 +33,7 @@ export default async function handler(req, res) {
 
     if (entries.length > 200) entries = entries.slice(0, 200);
 
-    await put(BLOB_KEY, JSON.stringify(entries), { access: "public", contentType: "application/json", allowOverwrite: true });
+    await put(BLOB_KEY, JSON.stringify(entries), { contentType: "application/json", allowOverwrite: true });
     return res.status(200).json({ ok: true });
   }
 
