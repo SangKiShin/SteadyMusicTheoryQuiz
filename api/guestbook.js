@@ -7,8 +7,9 @@ export default async function handler(req, res) {
     try {
       const { blobs } = await list({ prefix: BLOB_KEY, limit: 1 });
       if (!blobs || blobs.length === 0) return res.status(200).json([]);
-      const data = await fetch(blobs[0].url).then(r => r.json());
-      return res.status(200).json(data);
+      const resp = await fetch(blobs[0].url, { headers: { Authorization: `Bearer ${process.env.BLOB_READ_WRITE_TOKEN}` } });
+      const entries = await resp.json();
+      return res.status(200).json(entries);
     } catch (e) {
       return res.status(200).json([]);
     }
@@ -23,7 +24,10 @@ export default async function handler(req, res) {
     let entries = [];
     try {
       const { blobs } = await list({ prefix: BLOB_KEY, limit: 1 });
-      if (blobs && blobs.length > 0) entries = await fetch(blobs[0].url).then(r => r.json());
+      if (blobs && blobs.length > 0) {
+        const resp = await fetch(blobs[0].url, { headers: { Authorization: `Bearer ${process.env.BLOB_READ_WRITE_TOKEN}` } });
+        entries = await resp.json();
+      }
     } catch {}
 
     entries.unshift({
@@ -33,7 +37,7 @@ export default async function handler(req, res) {
 
     if (entries.length > 200) entries = entries.slice(0, 200);
 
-    await put(BLOB_KEY, JSON.stringify(entries), { contentType: "application/json", allowOverwrite: true });
+    await put(BLOB_KEY, JSON.stringify(entries), { access: "private", contentType: "application/json", allowOverwrite: true });
     return res.status(200).json({ ok: true });
   }
 
